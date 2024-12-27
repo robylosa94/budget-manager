@@ -1,0 +1,14 @@
+name: budget-manager-fe
+services:
+  budget-manager-fe:
+    build: .
+    container_name: budget-manager-fe
+    image: budget-manager-fe
+    volumes:
+      - ./src:/context/nuxt-app
+      - /context/nuxt-app/node_modules
+    tty: true
+    ports:
+      - "3010:3000"
+    environment:
+      ENVIRONMENT: "development"
