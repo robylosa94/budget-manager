@@ -22,7 +22,7 @@ Un'applicazione per gestire il bilancio personale sviluppata con **Nuxt 3**, **P
 1. Clona il repository:
    ```bash
    git clone <repository-url>
-   cd personal-budget-app
+   cd budget-manager
    ```
 
 2. Installa le dipendenze:
@@ -51,75 +51,14 @@ Un'applicazione per gestire il bilancio personale sviluppata con **Nuxt 3**, **P
 - **`/server/api`**: API backend per la gestione delle transazioni.
 - **`prisma/schema.prisma`**: Definizione del database e dei modelli.
 
-## Utilizzo di Docker
-
-### Configurazione Docker
-
-1. Crea un file `Dockerfile` nella radice del progetto:
-   ```dockerfile
-   # Utilizza un'immagine Node.js come base
-   FROM node:18
-
-   # Imposta la directory di lavoro
-   WORKDIR /app
-
-   # Copia i file di progetto
-   COPY package*.json ./
-   
-   # Installa le dipendenze
-   RUN npm install
-
-   # Copia il resto del codice
-   COPY . .
-
-   # Costruisce l'app per la produzione
-   RUN npm run build
-
-   # Espone la porta dell'app
-   EXPOSE 3000
-
-   # Comando di avvio
-   CMD ["npm", "run", "start"]
-   ```
-
-2. Crea un file `docker-compose.yml` per gestire il container:
-   ```yaml
-   version: '3.8'
-
-   services:
-     app:
-       build: .
-       ports:
-         - "3000:3000"
-       volumes:
-         - .:/app
-         - /app/node_modules
-       command: ["npm", "run", "dev"]
-   ```
-
 ### Esecuzione con Docker
 
-1. Costruisci l'immagine Docker:
+1. Avvia l'applicazione in modalità sviluppo:
    ```bash
-   docker-compose build
+   make start
    ```
 
-2. Avvia l'applicazione:
-   ```bash
-   docker-compose up
-   ```
-
-3. Accedi all'applicazione su `http://localhost:3000`.
-
-## Distribuzione
-
-1. Costruisci il progetto:
-   ```bash
-   npm run build
-   ```
-
-2. Distribuisci su una piattaforma come Vercel o Netlify.
-3. Configura un database di produzione (es. Supabase o PlanetScale).
+2. Accedi all'applicazione su `http://localhost:3010`.
 
 ## Estensioni Future
 
