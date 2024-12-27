@@ -1,6 +1,7 @@
 {
   "name": "budget-manager-fe",
   "private": true,
+  "license": "GPL-3.0",
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
@@ -14,5 +15,7 @@
     "vue": "latest",
     "vue-router": "latest"
   },
-  "license": "GPL-3.0"
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  }
 }
