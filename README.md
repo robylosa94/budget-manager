@@ -19,37 +19,11 @@ Un'applicazione per gestire il bilancio personale sviluppata con **Nuxt 3**, **P
 
 ## Installazione
 
-1. Clona il repository:
+Clona il repository:
    ```bash
    git clone <repository-url>
    cd budget-manager
    ```
-
-2. Installa le dipendenze:
-   ```bash
-   npm install
-   ```
-
-3. Configura il database:
-   ```bash
-   npx prisma init
-   ```
-   Aggiorna `prisma/schema.prisma` se necessario, quindi esegui la migrazione:
-   ```bash
-   npx prisma migrate dev --name init
-   ```
-
-4. Avvia il server di sviluppo:
-   ```bash
-   npm run dev
-   ```
-
-## Struttura del Progetto
-
-- **`/pages`**: Pagine principali dell'app (es. Home, Report).
-- **`/components`**: Componenti UI come liste e moduli di transazione.
-- **`/server/api`**: API backend per la gestione delle transazioni.
-- **`prisma/schema.prisma`**: Definizione del database e dei modelli.
 
 ### Esecuzione con Docker
 
@@ -59,6 +33,13 @@ Un'applicazione per gestire il bilancio personale sviluppata con **Nuxt 3**, **P
    ```
 
 2. Accedi all'applicazione su `http://localhost:3010`.
+
+## Struttura del Progetto
+
+- **`/pages`**: Pagine principali dell'app (es. Home, Report).
+- **`/components`**: Componenti UI come liste e moduli di transazione.
+- **`/server/api`**: API backend per la gestione delle transazioni.
+- **`prisma/schema.prisma`**: Definizione del database e dei modelli.
 
 ## Estensioni Future
 
