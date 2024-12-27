@@ -17,12 +17,6 @@ Un'applicazione per gestire il bilancio personale sviluppata con **Nuxt 3**, **P
 - **Grafici:** Chart.js, vue-chart-3
 - **Containerizzazione:** Docker
 
-## Requisiti
-
-- Node.js >= 16
-- npm >= 7
-- Docker e Docker Compose
-
 ## Installazione
 
 1. Clona il repository:
