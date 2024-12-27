@@ -1,5 +1,7 @@
 <template>
-  <header>Header</header>
-  <slot />
-  <footer>Footer</footer>
+  <common-header />
+  <main>
+    <slot />
+  </main>
+  <common-footer />
 </template>
