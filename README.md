@@ -27,6 +27,8 @@ Clona il repository:
 
 ### Esecuzione con Docker
 
+Per poter avviare l'applicazione dockerizzata in locale devi installare Orbstack (consigliato) oppure Docker Desktop.
+
 1. Avvia l'applicazione in modalità sviluppo:
    ```bash
    make start
