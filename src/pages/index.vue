@@ -8,4 +8,5 @@
       <v-btn color="secondary">Uscite</v-btn>
     </v-col>
   </v-row>
+  <operations-table />
 </template>
