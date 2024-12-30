@@ -1,3 +1,5 @@
 <template>
-  <footer>Footer</footer>
+  <footer>
+    <v-container>Footer</v-container>
+  </footer>
 </template>

@@ -1,14 +1,19 @@
 <template>
   <header>
-    <NuxtLink to="/">Home</NuxtLink>
-    <NuxtLink to="/settings">Settings</NuxtLink>
-    <v-btn
-      density="comfortable"
-      :icon="
-        themeValue === 'light' ? 'mdi-weather-night' : 'mdi-white-balance-sunny'
-      "
-      @click="toggleTheme"
-    />
+    <v-container class="d-flex align-center">
+      <NuxtLink to="/">Home</NuxtLink>
+      <NuxtLink to="/settings">Settings</NuxtLink>
+      <v-btn
+        density="comfortable"
+        :icon="
+          themeValue === 'light'
+            ? 'mdi-weather-night'
+            : 'mdi-white-balance-sunny'
+        "
+        class="ml-auto"
+        @click="toggleTheme"
+      />
+    </v-container>
   </header>
 </template>
 
