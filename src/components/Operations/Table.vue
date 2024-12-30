@@ -3,17 +3,23 @@
     <v-data-table
       :headers="headers"
       :items="filteredBody"
-      :sortable="false"
       item-value="id"
       class="elevation-1"
     >
-      <template #['item.type']="{ item }">
-        <v-icon v-if="item.type === 'in'" icon="mdi-bank-transfer-in" size="x-large" color="green" />
-        <v-icon v-else icon="mdi-bank-transfer-out" size="x-large" color="red" />
+      <template #item.type="{ item }">
+        <v-icon
+          :icon="
+            item.type === 'in'
+              ? 'mdi-bank-transfer-in'
+              : 'mdi-bank-transfer-out'
+          "
+          :size="'x-large'"
+          :color="item.type === 'in' ? 'green' : 'red'"
+        />
       </template>
-      <template #['item.label']="{ item }">
+      <template #item.label="{ item }">
         <v-chip>{{ item.label }}</v-chip>
-      </template>  
+      </template>
     </v-data-table>
   </v-skeleton-loader>
 </template>
@@ -42,19 +48,37 @@ const fetchOperations = async () => {
 
 const headers = computed(() => {
   return [
-    { title: 'Inserito il', value: 'created_at' },
-    { title: 'Descrizione', value: 'description' },
-    { title: 'Importo', value: 'amount' },
-    { title: 'Etichetta', value: 'label' },
-    { title: '', value: 'type' },
+    {
+      title: 'Inserito il',
+      value: 'created_at',
+      sortable: true,
+    } as const,
+    {
+      title: 'Descrizione',
+      value: 'description',
+    } as const,
+    {
+      title: 'Etichetta',
+      value: 'label',
+    } as const,
+    {
+      title: 'Importo',
+      value: 'amount',
+      align: 'end',
+    } as const,
+    {
+      title: '',
+      value: 'type',
+      align: 'center',
+    } as const,
   ]
 })
 
 const filteredBody = computed(() =>
   body.value.map(({ created_at, description, amount, type, label }) => ({
-    created_at,
+    created_at: formatDateLongNumeric(created_at),
     description,
-    amount,
+    amount: toEuro(amount),
     type,
     label,
   })),
