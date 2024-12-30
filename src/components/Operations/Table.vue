@@ -1,8 +1,8 @@
 <template>
-  <v-skeleton-loader type="table-tbody" :loading="loading" class="my-10">
+  <v-skeleton-loader type="table-tbody" :loading="store.loading" class="my-10">
     <v-data-table
-      :headers="headers"
-      :items="filteredBody"
+      :headers="store.headers"
+      :items="store.filteredBody"
       item-value="id"
       class="elevation-1"
     >
@@ -25,62 +25,9 @@
 </template>
 
 <script setup lang="ts">
-const client = useSupabaseClient()
-const body = ref([])
-const loading = ref(true)
+const store = useOperationsTableStore()
 
 onMounted(() => {
-  fetchOperations()
+  store.fetchOperations()
 })
-
-const fetchOperations = async () => {
-  const { data, error } = await client.from('operations').select('*')
-
-  loading.value = false
-
-  if (error) {
-    console.error('Error fetching operations:', error.message)
-    body.value = []
-  } else {
-    body.value = data || []
-  }
-}
-
-const headers = computed(() => {
-  return [
-    {
-      title: 'Inserito il',
-      value: 'created_at',
-      sortable: true,
-    } as const,
-    {
-      title: 'Descrizione',
-      value: 'description',
-    } as const,
-    {
-      title: 'Etichetta',
-      value: 'label',
-    } as const,
-    {
-      title: 'Importo',
-      value: 'amount',
-      align: 'end',
-    } as const,
-    {
-      title: '',
-      value: 'type',
-      align: 'center',
-    } as const,
-  ]
-})
-
-const filteredBody = computed(() =>
-  body.value.map(({ created_at, description, amount, type, label }) => ({
-    created_at: formatDateLongNumeric(created_at),
-    description,
-    amount: toEuro(amount),
-    type,
-    label,
-  })),
-)
 </script>

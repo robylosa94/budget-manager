@@ -12,7 +12,10 @@ export default defineNuxtConfig({
       'process.env.DEBUG': false, // Necessary for Vuetify
     },
   },
-  modules: ['@nuxtjs/supabase'],
+  modules: ['@pinia/nuxt', '@nuxtjs/supabase'],
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
   supabase: {
     url: process.env.SUPABASE_URL,
     key: process.env.SUPABASE_KEY,
