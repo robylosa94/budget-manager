@@ -1,6 +1,6 @@
 <template>
   <header>
-    <v-container class="d-flex align-center">
+    <v-container max-width="1024" class="d-flex align-center">
       <NuxtLink to="/">Home</NuxtLink>
       <NuxtLink to="/settings">Settings</NuxtLink>
       <v-btn

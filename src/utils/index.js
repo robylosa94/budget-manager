@@ -13,8 +13,8 @@ const formatDateLongNumeric = (value) => {
   return date.toLocaleDateString('it-IT', options)
 }
 
-// Example: x.xxx,xx €
-const toEuro = (value, options = {}) => {
+// Example: x.xxx,xx
+const formatToEuro = (value, options = {}) => {
   const { currency = false, decimal = true, truncate = false } = options
 
   const formatter = new Intl.NumberFormat('it-IT', {
@@ -26,7 +26,7 @@ const toEuro = (value, options = {}) => {
 
   const result = formatter.format(value)
 
-  return truncate ? Number.parseInt(result) : result + ' €'
+  return truncate ? Number.parseInt(result) : result
 }
 
-export { formatDateLongNumeric, toEuro }
+export { formatDateLongNumeric, formatToEuro }

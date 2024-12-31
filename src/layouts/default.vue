@@ -1,9 +1,10 @@
 <template>
   <v-app>
     <common-header />
-    <main>
+    <v-main>
       <slot />
-    </main>
+    </v-main>
     <common-footer />
+    <v-snackbar />
   </v-app>
 </template>

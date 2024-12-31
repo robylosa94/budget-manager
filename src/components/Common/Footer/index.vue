@@ -1,5 +1,5 @@
 <template>
   <footer>
-    <v-container>Footer</v-container>
+    <v-container max-width="1024">Footer</v-container>
   </footer>
 </template>

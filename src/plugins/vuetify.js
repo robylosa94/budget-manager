@@ -5,7 +5,7 @@ import 'vuetify/styles' // Importa gli stili globali di Vuetify
 import { ref } from 'vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const isDarkMode = ref(false)
+  const isDarkMode = ref(true)
 
   const vuetify = createVuetify({
     components,

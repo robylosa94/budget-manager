@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore, acceptHMRUpdate } from 'pinia'
 
 export const useOperationsTableStore = defineStore('operationsTable', {
   state: () => ({
@@ -14,26 +14,25 @@ export const useOperationsTableStore = defineStore('operationsTable', {
         value: 'description',
       } as const,
       {
-        title: 'Etichetta',
-        value: 'label',
-      } as const,
-      {
-        title: 'Importo',
-        value: 'amount',
+        title: 'Uscita',
+        value: 'out',
         align: 'end',
       } as const,
       {
-        title: '',
-        value: 'type',
-        align: 'center',
+        title: 'Entrata',
+        value: 'in',
+        align: 'end',
       } as const,
     ],
     body: [] as Array<any>,
   }),
   actions: {
-    async fetchOperations() {
+    async getOperations() {
       const client = useSupabaseClient()
-      const { data, error } = await client.from('operations').select('*')
+      const { data, error } = await client
+        .from('operations')
+        .select('*')
+        .order('created_at', { ascending: false })
 
       this.loading = false
 
@@ -47,12 +46,21 @@ export const useOperationsTableStore = defineStore('operationsTable', {
   },
   getters: {
     filteredBody: (state) =>
-      state.body.map(({ created_at, description, amount, type, label }) => ({
-        created_at: formatDateLongNumeric(created_at),
-        description,
-        amount: toEuro(amount),
-        type,
-        label,
-      })),
+      state.body.map(
+        ({ created_at, description, amount, type, label, recurring }) => ({
+          created_at: formatDateLongNumeric(created_at),
+          description,
+          amount: formatToEuro(amount),
+          type,
+          label,
+          recurring,
+        }),
+      ),
   },
 })
+
+if (import.meta.hot) {
+  import.meta.hot.accept(
+    acceptHMRUpdate(useOperationsTableStore, import.meta.hot),
+  )
+}
