@@ -5,6 +5,6 @@
       <slot />
     </v-main>
     <common-footer />
-    <v-snackbar />
+    <common-snackbar />
   </v-app>
 </template>

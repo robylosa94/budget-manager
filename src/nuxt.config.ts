@@ -12,7 +12,6 @@ export default defineNuxtConfig({
       'process.env.DEBUG': false, // Necessary for Vuetify
     },
   },
-  plugins: ['~/plugins/global'],
   modules: ['@pinia/nuxt', '@nuxtjs/supabase'],
   pinia: {
     storesDirs: ['./stores/**'],

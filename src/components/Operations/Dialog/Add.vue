@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-const { $global } = useNuxtApp()
+const { $snackbar } = useNuxtApp()
 const store = useOperationsAddStore()
 const storeDialog = useDialogOperationsAddStore()
 const storeTable = useOperationsTableStore()
@@ -74,7 +74,7 @@ watch(
   () => storeDialog.show,
   (newValue) => {
     if (newValue) {
-      store.resetState()
+      store.$reset()
     }
   },
 )
@@ -93,9 +93,11 @@ const onSuccess = async () => {
 }
 
 const onError = () => {
-  $global.snackbar({
+  $snackbar({
     type: 'error',
-    title: "Errore durante il salvataggio dell'operazione",
+    title: 'Attenzione!',
+    content:
+      "Si è verificato un errore durante il salvataggio dell'operazione.",
   })
 }
 </script>

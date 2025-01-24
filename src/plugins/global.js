@@ -1,11 +1,12 @@
-export default defineNuxtPlugin((nuxtApp) => {
-  const snackbar = (data) => {
-    const storeSnackbar = useMiscSnackbarStore()
-    storeSnackbar.enable(data)
-  }
+const snackbar = (props) => {
+  const store = useMiscSnackbarStore()
+  store.enable(props)
+}
 
-  const global = {
-    snackbar,
+export default defineNuxtPlugin(() => {
+  return {
+    provide: {
+      snackbar,
+    },
   }
-  nuxtApp.provide('global', global)
 })

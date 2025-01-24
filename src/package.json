@@ -19,6 +19,7 @@
     "vuetify": "^3.7.6"
   },
   "devDependencies": {
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "sass-embedded": "^1.83.4"
   }
 }

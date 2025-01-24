@@ -35,9 +35,6 @@ export const useOperationsAddStore = defineStore('operationsAdd', {
         this.loading = false
       }
     },
-    resetState() {
-      this.$reset()
-    },
   },
   getters: {
     payload: (state) => {
