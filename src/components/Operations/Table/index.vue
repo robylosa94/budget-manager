@@ -5,6 +5,7 @@
       :headers="store.headers"
       :items="store.filteredBody"
       item-value="id"
+      no-data-text="Nessun dato disponibile"
     >
       <template #item.description="{ item }">
         <v-chip class="mr-2">{{ item.label }}</v-chip>
