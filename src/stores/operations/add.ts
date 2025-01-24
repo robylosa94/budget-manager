@@ -5,7 +5,7 @@ interface OperationType {
   description: string | null
   amount: number | null
   label: string | null
-  recurring: boolean | null
+  recurring?: boolean | null
 }
 
 export const useOperationsAddStore = defineStore('operationsAdd', {
@@ -40,19 +40,17 @@ export const useOperationsAddStore = defineStore('operationsAdd', {
     },
   },
   getters: {
-    payload: ({
-      type,
-      description,
-      amount,
-      label,
-      recurring,
-    }: OperationType) => ({
-      type,
-      description,
-      amount,
-      label,
-      recurring,
-    }),
+    payload: (state) => {
+      const { type, description, amount, label, recurring }: OperationType =
+        state
+      return {
+        type,
+        description,
+        amount,
+        label,
+        recurring,
+      }
+    },
   },
 })
 
